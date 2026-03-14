@@ -9,6 +9,7 @@ class result_Screen extends StatelessWidget {
     required this.age,
     required this.weight,
     required this.height,
+    required this.result
   });
 
   final bool? girl;
@@ -16,6 +17,8 @@ class result_Screen extends StatelessWidget {
   final int age;
   final int weight;
   final int height;
+  final String result;
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +41,8 @@ class result_Screen extends StatelessWidget {
               _infoRow("Age", "$age years"),
               _infoRow("Weight", "$weight kg"),
               _infoRow("Height", "$height cm"),
+              Text("----------------------", style: TextStyle(fontSize: 18, color: Colors.grey)),
+              _resultRow(result)
             ],
           ),
         ),
@@ -57,4 +62,17 @@ class result_Screen extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget _resultRow( String value) {
+  return Container(
+    padding: const EdgeInsets.symmetric(vertical: 8),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text("BMI : ", style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold)),
+        Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+      ],
+    ),
+  );
 }
